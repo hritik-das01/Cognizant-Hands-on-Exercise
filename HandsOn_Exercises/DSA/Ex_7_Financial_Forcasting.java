@@ -1,4 +1,4 @@
-package HandsOn_Exercises;
+package HandsOn_Exercises.DSA;
 
 public class Ex_7_Financial_Forcasting {
 

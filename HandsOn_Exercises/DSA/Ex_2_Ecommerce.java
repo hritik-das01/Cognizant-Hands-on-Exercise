@@ -1,4 +1,4 @@
-package HandsOn_Exercises;
+package HandsOn_Exercises.DSA;
 
 import java.util.*;
 
