@@ -1,4 +1,4 @@
-package HandsOn_Exercises;
+package HandsOn_Exercises.Design_Pattern;
 //Factory Method Pattern :
 
 public class Ex_2_FactoryMain{
