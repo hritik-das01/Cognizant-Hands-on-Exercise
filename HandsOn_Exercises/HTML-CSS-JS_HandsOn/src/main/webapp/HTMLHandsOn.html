@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Community Event Portal</title>
+    
+    <!-- Internal CSS Styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Exercise 3: Welcome Banner Styling */
+        #welcomeBanner {
+            background-color: #0044cc;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .highlight {
+            background-color: yellow;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #333;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            padding: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        /* Exercise 4: Image Gallery Styling */
+        .gallery-img {
+            border: 2px solid #555;
+            border-radius: 5px;
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        td {
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Exercise 5: Form Styling */
+        form {
+            max-width: 500px;
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .error-msg {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <!-- Exercise 3: Welcome Message with ID and Class -->
+        <div id="welcomeBanner">
+            <h1>Welcome to the City Community Portal</h1>
+            <p>Special Announcement: <span style="color: #ffcc00; font-weight: bold;">Free Entry for Senior Citizens!</span></p>
+            <p class="highlight">Check out our upcoming weekend events below!</p>
+        </div>
+
+        <!-- Exercise 2: Navigation & Linking -->
+        <!-- Navigation Section -->
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#events">Events</a>
+            <a href="#register">Register</a>
+            <a href="#feedback">Feedback</a>
+            <a href="#video">Watch Promo</a>
+            <a href="help.html" target="_blank">Help Center</a>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+
+        <!-- Home Section -->
+        <section id="home">
+            <h2>About Our Portal</h2>
+            <p>Helping local residents easily find events, check locations, and register online.</p>
+            
+            <!-- Exercise 9: Geolocation -->
+            <button onclick="findNearbyEvents()">Find Nearby Events</button>
+            <p id="geoStatus"></p>
+        </section>
+
+        <!-- Exercise 4: Image Gallery Section -->
+        <section id="events">
+            <h2>Past Event Gallery</h2>
+            <table>
+                <caption>Highlights from Recent City Council Gatherings</caption>
+                <tr>
+                    <td>
+                        <img src="https://via.placeholder.com/150" alt="Music Fest" title="Annual Music Fest" class="gallery-img" ondblclick="enlargeImage(this)">
+                        <p>Annual Music Fest</p>
+                    </td>
+                    <td>
+                        <img src="https://via.placeholder.com/150" alt="Food Fair" title="City Food Fair" class="gallery-img" ondblclick="enlargeImage(this)">
+                        <p>City Food Fair</p>
+                    </td>
+                    <td>
+                        <img src="https://via.placeholder.com/150" alt="Art Expo" title="Local Art Expo" class="gallery-img" ondblclick="enlargeImage(this)">
+                        <p>Local Art Expo</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="https://via.placeholder.com/150" alt="Marathon" title="City Marathon" class="gallery-img" ondblclick="enlargeImage(this)">
+                        <p>Community Marathon</p>
+                    </td>
+                    <td>
+                        <img src="https://via.placeholder.com/150" alt="Tree Plantation" title="Green Drive" class="gallery-img" ondblclick="enlargeImage(this)">
+                        <p>Green Drive</p>
+                    </td>
+                    <td>
+                        <img src="https://via.placeholder.com/150" alt="Tech Fair" title="Youth Tech Fair" class="gallery-img" ondblclick="enlargeImage(this)">
+                        <p>Youth Tech Fair</p>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Exercise 5 & 6: Event Registration Form -->
+        <section id="register">
+            <h2>Event Registration</h2>
+            <form id="registrationForm" onsubmit="handleFormSubmit(event)">
+                
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" placeholder="John Doe" required autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" placeholder="john@example.com" required>
+                </div>
+
+                <!-- Exercise 6: Blur Event Validation -->
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" placeholder="10-digit number" onblur="validatePhone(this)">
+                    <span id="phoneError" class="error-msg"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="eventDate">Event Date:</label>
+                    <input type="date" id="eventDate" required>
+                </div>
+
+                <!-- Exercise 6 & 8: Dropdown Change & Local Storage -->
+                <div class="form-group">
+                    <label for="eventType">Select Event Type:</label>
+                    <select id="eventType" onchange="handleEventTypeChange(this)" required>
+                        <option value="">-- Select Event --</option>
+                        <option value="Music Fest">Music Fest ($10)</option>
+                        <option value="Food Fair">Food Fair ($5)</option>
+                        <option value="Art Expo">Art Expo (Free)</option>
+                    </select>
+                    <p id="feeDisplay"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message/Special Requests:</label>
+                    <textarea id="message" placeholder="Any dietary or seating preferences..."></textarea>
+                </div>
+
+                <!-- Exercise 6: Click Event -->
+                <button type="submit" onclick="logSubmitClick()">Submit Registration</button>
+                
+                <!-- Exercise 8: Clear Preferences -->
+                <button type="button" onclick="clearUserPreferences()">Clear Preferences</button>
+
+                <!-- Exercise 5: Output element -->
+                <p><output id="formOutput"></output></p>
+            </form>
+        </section>
+
+        <!-- Exercise 6: Feedback Section with Key Events -->
+        <section id="feedback">
+            <h2>Event Feedback</h2>
+            <div class="form-group">
+                <label for="feedbackText">Leave your comments:</label>
+                <textarea id="feedbackText" onkeyup="countCharacters(this)" placeholder="Type feedback..."></textarea>
+                <p>Character count: <span id="charCount">0</span></p>
+            </div>
+        </section>
+
+        <!-- Exercise 7: Video Invite with Media Events -->
+        <section id="video">
+            <h2>Event Promo Video</h2>
+            <video width="320" height="240" controls oncanplay="videoReady()">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p id="videoStatus"></p>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p style="text-align: center; padding: 10px;">&copy; 2026 City Council Portal. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Exercise 10: Live Debugging - Watch variables & console logs
+        console.log("Portal Script Initialized.");
+
+        let isFormTouched = false;
+
+        // Track user interaction for Exercise 7 (onbeforeunload)
+        document.getElementById("registrationForm").addEventListener("input", function() {
+            isFormTouched = true;
+        });
+
+        // Exercise 6: Phone blur validation
+        function validatePhone(input) {
+            const phoneError = document.getElementById("phoneError");
+            const phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(input.value) && input.value !== "") {
+                phoneError.innerText = "Please enter a valid 10-digit phone number.";
+            } else {
+                phoneError.innerText = "";
+            }
+        }
+
+        // Exercise 6 & 8: Dropdown Change & Local Storage
+        function handleEventTypeChange(selectElement) {
+            const selectedEvent = selectElement.value;
+            const feeDisplay = document.getElementById("feeDisplay");
+
+            // Event Fee Calculation
+            if (selectedEvent === "Music Fest") {
+                feeDisplay.innerText = "Selected Event Fee: $10";
+            } else if (selectedEvent === "Food Fair") {
+                feeDisplay.innerText = "Selected Event Fee: $5";
+            } else if (selectedEvent === "Art Expo") {
+                feeDisplay.innerText = "Selected Event Fee: Free";
+            } else {
+                feeDisplay.innerText = "";
+            }
+
+            // Exercise 8: Save to LocalStorage
+            if (selectedEvent) {
+                localStorage.setItem("preferredEventType", selectedEvent);
+            }
+        }
+
+        // Exercise 8: Retrieve preferences on reload
+        window.onload = function() {
+            const savedPreference = localStorage.getItem("preferredEventType");
+            if (savedPreference) {
+                const select = document.getElementById("eventType");
+                select.value = savedPreference;
+                handleEventTypeChange(select);
+            }
+        };
+
+        // Exercise 8: Clear Storage
+        function clearUserPreferences() {
+            localStorage.clear();
+            sessionStorage.clear();
+            document.getElementById("eventType").value = "";
+            document.getElementById("feeDisplay").innerText = "";
+            alert("Preferences cleared!");
+        }
+
+        // Exercise 5 & 6: Form submission & Click Handler
+        function logSubmitClick() {
+            console.log("Submit button clicked.");
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent page refresh
+            isFormTouched = false; // Reset form status
+
+            const name = document.getElementById("fullName").value;
+            const eventType = document.getElementById("eventType").value;
+
+            const output = document.getElementById("formOutput");
+            output.value = `Thank you, ${name}! You have successfully registered for the ${eventType}.`;
+        }
+
+        // Exercise 6: Double Click Event
+        function enlargeImage(img) {
+            if (img.style.transform === "scale(1.5)") {
+                img.style.transform = "scale(1)";
+            } else {
+                img.style.transform = "scale(1.5)";
+                img.style.transition = "transform 0.2s";
+            }
+        }
+
+        // Exercise 6: Keyup Character Count
+        function countCharacters(textarea) {
+            document.getElementById("charCount").innerText = textarea.value.length;
+        }
+
+        // Exercise 7: Video Media Event
+        function videoReady() {
+            document.getElementById("videoStatus").innerText = "Video ready to play!";
+        }
+
+        // Exercise 7: Warn user before exiting with unsaved changes
+        window.onbeforeunload = function(e) {
+            if (isFormTouched) {
+                return "You have unsaved changes in your registration form!";
+            }
+        };
+
+        // Exercise 9: Geolocation
+        function findNearbyEvents() {
+            const status = document.getElementById("geoStatus");
+
+            if (!navigator.geolocation) {
+                status.innerText = "Geolocation is not supported by your browser.";
+                return;
+            }
+
+            status.innerText = "Locating nearby events...";
+
+            const options = {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            };
+
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    status.innerText = `Location Found! Latitude: ${lat.toFixed(4)}, Longitude: ${lon.toFixed(4)}`;
+                },
+                (error) => {
+                    switch (error.code) {
+                        case error.PERMISSION_DENIED:
+                            status.innerText = "User denied the request for Geolocation.";
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            status.innerText = "Location information is unavailable.";
+                            break;
+                        case error.TIMEOUT:
+                            status.innerText = "The request to get user location timed out.";
+                            break;
+                        default:
+                            status.innerText = "An unknown error occurred.";
+                            break;
+                    }
+                },
+                options
+            );
+        }
+    </script>
+</body>
+</html>

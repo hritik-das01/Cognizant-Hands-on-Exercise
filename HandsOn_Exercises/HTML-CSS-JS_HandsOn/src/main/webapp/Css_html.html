@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Community Event Portal</title>
+
+    <!-- Exercise 5: Google Font Inclusion -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Exercise 1: External Stylesheet Link -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Exercise 1: Embedded Internal CSS for Body Background Fallback -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <!-- Exercise 3: ID Selector (#mainHeader) -->
+    <header id="mainHeader">
+        <!-- Exercise 1: Inline Style Example -->
+        <h1 style="color: #d9534f;">City Community Portal</h1>
+        <p>Your one-stop destination for local events, services, and council news.</p>
+    </header>
+
+    <!-- Exercise 6: Navigation Menu -->
+    <nav>
+        <ul class="nav-menu">
+            <li><a href="#events">Upcoming Events</a></li>
+            <li><a href="#table-section">Event Schedule</a></li>
+            <li><a href="#bulletin">Community Bulletin</a></li>
+            <li><a href="#contact">Contact Council</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main>
+
+        <!-- Events Section -->
+        <section id="events">
+            <h2>Upcoming Community Events</h2>
+
+            <!-- Exercise 3 & 8: Class Selectors (.eventCard) & Box Model -->
+            <div class="event-grid">
+                <div class="eventCard">
+                    <h3>Summer Music Fest</h3>
+                    <p>Enjoy live performances from local bands at City Park.</p>
+                    <button class="cta-button">Register Now</button>
+                </div>
+
+                <div class="eventCard">
+                    <h3>Annual Food Fair</h3>
+                    <p>Sample delicious street food and artisan treats from town vendors.</p>
+                    <button class="cta-button">Register Now</button>
+                </div>
+
+                <div class="eventCard">
+                    <h3>Community Green Drive</h3>
+                    <p>Join us in planting trees and cleaning up our local reserve.</p>
+                    <button class="cta-button">Register Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercise 7: Table Section -->
+        <section id="table-section">
+            <h2>Events Administration Schedule</h2>
+            <table class="events-table">
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Location</th>
+                        <th>Date</th>
+                        <th>Capacity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Summer Music Fest</td>
+                        <td>City Park Auditorium</td>
+                        <td>Aug 15, 2026</td>
+                        <td>500</td>
+                    </tr>
+                    <tr>
+                        <td>Annual Food Fair</td>
+                        <td>Town Square Plaza</td>
+                        <td>Aug 22, 2026</td>
+                        <td>1200</td>
+                    </tr>
+                    <tr>
+                        <td>Community Green Drive</td>
+                        <td>Riverside Reserve</td>
+                        <td>Sep 05, 2026</td>
+                        <td>250</td>
+                    </tr>
+                    <tr>
+                        <td>Youth Tech Workshop</td>
+                        <td>Community Library</td>
+                        <td>Sep 12, 2026</td>
+                        <td>100</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Exercise 9: Multiple Columns Section -->
+        <section id="bulletin">
+            <h2>Community Newspaper Bulletin</h2>
+            <div class="news-article">
+                <p>
+                    The City Council is pleased to announce new infrastructure projects starting this autumn. 
+                    These developments aim to improve public transit, extend cycling paths, and revitalize 
+                    our historic downtown district. Citizens are invited to public forums held every Thursday 
+                    evening at City Hall to provide feedback and ask questions directly to city planners.
+                </p>
+                <p>
+                    Additionally, public library services are expanding with digital literacy programs, 
+                    after-school tutoring sessions, and weekend coding bootcamps. Registration for all council-sponsored 
+                    events remains completely free for residents. Make sure to update your user profile online 
+                    to receive monthly neighborhood newsletters and urgent council alerts.
+                </p>
+            </div>
+        </section>
+
+        <!-- Exercise 8: Form with Focus Outline -->
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <form class="contact-form">
+                <label for="username">Your Name:</label>
+                <input type="text" id="username" placeholder="Enter your name">
+
+                <label for="useremail">Your Email:</label>
+                <input type="email" id="useremail" placeholder="Enter your email">
+
+                <label for="usertext">Message:</label>
+                <textarea id="usertext" rows="4" placeholder="How can we help?"></textarea>
+
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </section>
+
+        <!-- Exercise 8: Demonstrating visibility vs. display -->
+        <div class="hidden-element-display">This text is hidden using display: none</div>
+        <div class="hidden-element-visibility">This text is hidden using visibility: hidden</div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Local City Council Portal. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
